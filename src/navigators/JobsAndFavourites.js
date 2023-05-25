@@ -1,14 +1,29 @@
 import {createDrawerNavigator} from '@react-navigation/drawer';
+import {getFocusedRouteNameFromRoute} from '@react-navigation/native';
 
 import {Favourites} from '../pages/index';
 import JobsAndDetails from './JobsAndDetails';
+
+import HeaderBack from '../components/HeaderBack';
 
 const Drawer = createDrawerNavigator();
 
 function JobsAndFavourites() {
   return (
-    <Drawer.Navigator>
-      <Drawer.Screen name="Jobs" component={JobsAndDetails} />
+    <Drawer.Navigator
+      screenOptions={{
+        headerTitleAlign: 'center',
+      }}>
+      <Drawer.Screen
+        name="Jobs"
+        component={JobsAndDetails}
+        options={({navigation, route}) => ({
+          headerTitle: getFocusedRouteNameFromRoute(route),
+          headerLeft: () => {
+            return <HeaderBack navigation={navigation} />;
+          },
+        })}
+      />
       <Drawer.Screen name="Favourites" component={Favourites} />
     </Drawer.Navigator>
   );

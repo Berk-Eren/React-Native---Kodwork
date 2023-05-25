@@ -6,10 +6,25 @@
  */
 
 import React from 'react';
-import {SafeAreaView} from 'react-native';
+import {SafeAreaView, Text, View, useColorScheme} from 'react-native';
+
+import {NavigationContainer} from '@react-navigation/native';
+
+import {Colors} from 'react-native/Libraries/NewAppScreen';
+import JobsAndFavourites from './navigators/JobsAndFavourites';
 
 function App() {
-  return <SafeAreaView style={backgroundStyle}></SafeAreaView>;
+  const isDarkMode = useColorScheme() === 'dark';
+
+  const backgroundStyle = {
+    backgroundColor: isDarkMode ? Colors.darker : Colors.lighter,
+  };
+
+  return (
+    <NavigationContainer>
+      <JobsAndFavourites />
+    </NavigationContainer>
+  );
 }
 
 export default App;
