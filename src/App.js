@@ -7,7 +7,6 @@
 
 import React from 'react';
 import {useColorScheme} from 'react-native';
-import {navigationRef} from './navigators/RootNavigation';
 
 import {NavigationContainer} from '@react-navigation/native';
 
@@ -22,7 +21,7 @@ function App() {
   };
 
   return (
-    <NavigationContainer ref={navigationRef}>
+    <NavigationContainer>
       <JobsAndFavourites />
     </NavigationContainer>
   );

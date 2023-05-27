@@ -11,7 +11,11 @@ function JobsAndDetails() {
         headerShown: false,
         initialRouteName: 'JobList',
       }}>
-      <Stack.Screen name="JobList" component={Jobs} options={{title: 'Jobs'}} />
+      <Stack.Screen
+        name="JobList"
+        component={Jobs}
+        options={{headerTitle: 'Jobs'}} // TODO
+      />
       <Stack.Screen
         name="JobDetail"
         component={JobDetail}

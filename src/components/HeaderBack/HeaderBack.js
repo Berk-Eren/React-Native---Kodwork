@@ -1,38 +1,39 @@
-import {View} from 'react-native';
+import {View, TouchableHighlight} from 'react-native';
 import {StyleSheet} from 'react-native';
 
-import {HeaderBackButton} from '@react-navigation/elements';
 import {DrawerToggleButton} from '@react-navigation/drawer';
 
 import {useNavigationState, useNavigation} from '@react-navigation/native';
 
+import AntDesignIcon from 'react-native-vector-icons/dist/AntDesign';
+
 function HeaderBack(props) {
-  const {navigation} = props;
+  const {routerNames} = props;
 
-  const state = JSON.stringify(
-    useNavigationState(state => state),
-    null,
-    2,
-  );
+  const navigation = useNavigation();
+  const state = useNavigationState(state => state);
 
-  const nav = useNavigation();
+  const indexes = routerNames.reduce((r, n) => {
+    r.push(state.routeNames.indexOf(n));
+    return r;
+  }, []);
 
-  console.log(JSON.stringify(props.nav.getState(), null, 2));
-  console.log('-----------');
-  console.log(state);
-  console.log('sds');
-  console.log(JSON.stringify(nav.getState(), null, 2));
-  console.log(navigation.canGoBack());
-  console.log(nav.canGoBack());
-
-  console.log(navigation.getId);
-  console.log(nav.getId());
+  const stateIndex = state.index;
+  const subState = state.routes[stateIndex].state;
 
   return (
     <View style={styles.container}>
       <DrawerToggleButton />
-      {navigation.canGoBack() && (
-        <HeaderBackButton onPress={() => navigation.goBack()} />
+      {indexes.includes(stateIndex) && subState?.index > 0 && (
+        <TouchableHighlight
+          underlayColor="white"
+          onPress={() =>
+            navigation.navigate(state.routes[stateIndex].name, {
+              screen: subState.routeNames[subState.index - 1],
+            })
+          }>
+          <AntDesignIcon name="left" size={23} color="black" />
+        </TouchableHighlight>
       )}
     </View>
   );
@@ -41,6 +42,7 @@ function HeaderBack(props) {
 const styles = StyleSheet.create({
   container: {
     flexDirection: 'row',
+    alignItems: 'center',
   },
 });
 
