@@ -19,6 +19,6 @@ function JobsAndDetails() {
       />
     </Stack.Navigator>
   );
-} // ({headerTitle: route.params.title})
+}
 
 export default JobsAndDetails;

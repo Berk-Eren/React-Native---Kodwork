@@ -6,7 +6,8 @@
  */
 
 import React from 'react';
-import {SafeAreaView, Text, View, useColorScheme} from 'react-native';
+import {useColorScheme} from 'react-native';
+import {navigationRef} from './navigators/RootNavigation';
 
 import {NavigationContainer} from '@react-navigation/native';
 
@@ -21,7 +22,7 @@ function App() {
   };
 
   return (
-    <NavigationContainer>
+    <NavigationContainer ref={navigationRef}>
       <JobsAndFavourites />
     </NavigationContainer>
   );

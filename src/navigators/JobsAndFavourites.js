@@ -4,6 +4,8 @@ import {getFocusedRouteNameFromRoute} from '@react-navigation/native';
 import {Favourites} from '../pages/index';
 import JobsAndDetails from './JobsAndDetails';
 
+import {navigationRef, goBack} from './RootNavigation';
+
 import HeaderBack from '../components/HeaderBack';
 
 const Drawer = createDrawerNavigator();
@@ -20,7 +22,7 @@ function JobsAndFavourites() {
         options={({navigation, route}) => ({
           headerTitle: getFocusedRouteNameFromRoute(route),
           headerLeft: () => {
-            return <HeaderBack navigation={navigation} />;
+            return <HeaderBack navigation={navigationRef} nav={navigation} />;
           },
         })}
       />
