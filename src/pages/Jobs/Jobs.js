@@ -1,4 +1,4 @@
-import {View, Text, Button, FlatList} from 'react-native';
+import {View, Button, FlatList} from 'react-native';
 
 import JobCard from '../../components/JobCard';
 
@@ -6,7 +6,7 @@ import LoadingWrapper from '../../components/LoadingWrapper/LoadingWrapper';
 
 import {useFetch} from '../../hooks';
 
-function Jobs({navigation}) {
+function Jobs() {
   const [data, isLoading, error] = useFetch('api/public/jobs', {
     params: {page: 1},
   });
@@ -28,15 +28,6 @@ function Jobs({navigation}) {
             );
           }}
           keyExtractor={item => item.id}
-        />
-        <Button
-          title="Tıkla"
-          onPress={() =>
-            navigation.navigate('JobDetail', {
-              id: undefined,
-              title: 'Geçici',
-            })
-          }
         />
       </View>
     </LoadingWrapper>

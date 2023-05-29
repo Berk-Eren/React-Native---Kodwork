@@ -22,7 +22,13 @@ function JobDetail({route}) {
             />
             <Detail content={data.contents} />
             <View style={{marginVertical: 15, marginBottom: 25}}>
-              <Button />
+              <Button
+                jobId={data.id}
+                jobTitle={data.name}
+                jobCompany={data.company.name}
+                jobCity={data.locations[0].name}
+                jobLevel={data.levels[0].name}
+              />
             </View>
           </>
         )}

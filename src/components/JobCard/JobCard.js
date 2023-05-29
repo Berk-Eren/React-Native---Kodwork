@@ -4,6 +4,8 @@ import {useNavigation} from '@react-navigation/native';
 import styles from './JobCard.styles';
 
 function JobCard(props) {
+  const {jobId, title, company, city, level} = props;
+
   const navigation = useNavigation();
 
   function navigateToJob(jobId) {
@@ -13,14 +15,14 @@ function JobCard(props) {
   return (
     <TouchableHighlight
       style={styles.container}
-      onPress={() => navigateToJob(props.jobId)}>
+      onPress={() => navigateToJob(jobId)}>
       <View>
-        <Text style={styles.title}>{props.title}</Text>
-        <Text style={styles.company}>{props.company}</Text>
+        <Text style={styles.title}>{title}</Text>
+        <Text style={styles.company}>{company}</Text>
         <View style={styles.cityContainer}>
-          <Text style={styles.city}>{props.city}</Text>
+          <Text style={styles.city}>{city}</Text>
         </View>
-        <Text style={styles.level}>{props.level}</Text>
+        <Text style={styles.level}>{level}</Text>
       </View>
     </TouchableHighlight>
   );
