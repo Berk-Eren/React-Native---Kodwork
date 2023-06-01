@@ -17,7 +17,7 @@ function JobsAndFavourites() {
       <Drawer.Screen
         name="Jobs"
         component={JobsAndDetails}
-        options={({navigation, route}) => ({
+        options={({route}) => ({
           headerTitle: getFocusedRouteNameFromRoute(route),
           headerLeft: () => {
             return <HeaderBack routerNames={['Jobs']} />;

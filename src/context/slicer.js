@@ -20,13 +20,8 @@ const favouriteJobsSlice = createSlice({
         };
       },
     },
-    removeJob(state, action) {
-      state = state.find(it => {
-        console.log(it.id);
-        console.log(action.payload.id);
-        return it.id != action.payload.id;
-      });
-    },
+    removeJob: (state, action) =>
+      state.filter(it => it.id != action.payload.id),
   },
 });
 

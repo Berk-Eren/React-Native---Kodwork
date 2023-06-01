@@ -5,8 +5,6 @@ import Lottie from 'lottie-react-native';
 function LoadingWrapper(props) {
   const {children, isLoading, error} = props;
 
-  console.log(error);
-
   if (isLoading)
     return <Lottie source={require('./loadingAnimation.json')} autoPlay />;
 

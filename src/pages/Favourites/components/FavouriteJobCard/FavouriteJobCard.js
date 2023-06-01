@@ -1,29 +1,47 @@
-import {useSelector} from 'react-redux';
+import {removeJob} from '../../../../context/slicer';
+import {useDispatch} from 'react-redux';
+import {useNavigation} from '@react-navigation/native';
 
-import {View, Button, FlatList, StyleSheet} from 'react-native';
+import {View, TouchableHighlight, Text, TouchableOpacity} from 'react-native';
 
-import JobCard from '../../../../components/JobCard';
+import styles from './FavouriteJobCard.styles';
 
-function FavouriteJobCard() {
-  const favouriteJobs = useSelector(state => state.favouriteJobs);
+function FavouriteJobCard(props) {
+  const {jobId, title, company, city, level} = props;
 
+  const dispatch = useDispatch();
+  const navigation = useNavigation();
+
+  function navigateToJob(jobId) {
+    navigation.navigate('JobDetail', {title: 'Hello', jobId: jobId}); // TODO
+  }
+  // TODO Flex yapısını uygula
   return (
-    <View>
-      <FlatList
-        data={Object.keys(favouriteJobs)}
-        renderItem={({item}) => (
-          <JobCard
-            jobId={item}
-            title={favouriteJobs[item][title]}
-            company={favouriteJobs[item][company]}
-            city={favouriteJobs[item][city]}
-            level={favouriteJobs[item][level]}
-          />
-        )}
-      />
-
-      <Button />
-    </View>
+    <TouchableHighlight onPress={() => navigateToJob(jobId)}>
+      <View style={styles.container}>
+        <View style={styles.titleContainer}>
+          <Text style={styles.title}>{title}</Text>
+        </View>
+        <View style={styles.companyContainer}>
+          <Text style={styles.company}>{company}</Text>
+        </View>
+        <View style={styles.cityContainer}>
+          <Text style={styles.city}>{city}</Text>
+        </View>
+        <View style={styles.levelContainer}>
+          <Text style={styles.level}>{level}</Text>
+        </View>
+        <View style={styles.buttonContainer}>
+          <TouchableOpacity>
+            <Text
+              style={styles.buttonText}
+              onPress={() => dispatch(removeJob({id: jobId}))}>
+              Remove
+            </Text>
+          </TouchableOpacity>
+        </View>
+      </View>
+    </TouchableHighlight>
   );
 }
 

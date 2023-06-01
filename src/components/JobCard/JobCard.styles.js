@@ -13,6 +13,20 @@ const styles = StyleSheet.create({
     borderRadius: 10,
     backgroundColor: 'white',
   },
+  titleContainer: {
+    flex: 2,
+  },
+  companyContainer: {flex: 1},
+  cityContainer: {
+    flex: 1,
+    padding: 5,
+    justifyContent: 'center',
+    paddingHorizontal: 10,
+    backgroundColor: 'red',
+    borderRadius: 25,
+    alignSelf: 'flex-start',
+  },
+  levelContainer: {flex: 1},
   title: {
     fontWeight: 'bold',
     fontSize: 20,
@@ -20,24 +34,18 @@ const styles = StyleSheet.create({
   company: {
     fontSize: 15,
   },
-  cityContainer: {
-    padding: 5,
-    paddingHorizontal: 10,
-    backgroundColor: 'red',
-    borderRadius: 25,
-    marginTop: 7,
-    alignSelf: 'flex-start',
-  },
   city: {
     fontSize: 15,
     fontWeight: 'bold',
     color: 'white',
+    textAlignVertical: 'center',
   },
   level: {
-    marginTop: 2,
     textAlign: 'right',
     color: 'red',
     fontSize: 15,
+    verticalAlign: 'top',
+    textTransform: 'capitalize',
   },
 });
 

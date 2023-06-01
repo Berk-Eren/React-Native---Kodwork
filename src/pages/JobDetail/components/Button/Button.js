@@ -1,4 +1,4 @@
-import {useState} from 'react';
+import {useState, useEffect} from 'react';
 import {useDispatch, useSelector} from 'react-redux';
 import {TouchableOpacity, View, Text} from 'react-native';
 
@@ -11,15 +11,15 @@ import {addJob, removeJob} from '../../../../context/slicer';
 function Button(props) {
   const {jobId, jobTitle, jobCompany, jobCity, jobLevel} = props;
 
+  const [isFavourite, setIsFavourite] = useState();
+
   const dispatch = useDispatch();
   const favouriteJobs = useSelector(state => state.favouriteJobs);
 
-  console.log(favouriteJobs);
+  useEffect(() => {
+    setIsFavourite(Boolean(favouriteJobs.find(it => it.id == jobId)));
+  }, [favouriteJobs]);
 
-  const [isFavourite, setIsFavourite] = useState(
-    favouriteJobs.find(item => item.id == jobId),
-  );
-  console.log('Job id ', jobId);
   const updateFavouriteStatus = () => {
     if (isFavourite) {
       dispatch(removeJob({id: jobId}));
@@ -43,7 +43,7 @@ function Button(props) {
           color="white"
         />
         <Text style={styles.text}>
-          {(isFavourite ? 'Unf' : 'F') + 'avourite Job'}
+          {isFavourite ? 'Unfavourite Job' : 'Favourite Job'}
         </Text>
       </TouchableOpacity>
     </View>
