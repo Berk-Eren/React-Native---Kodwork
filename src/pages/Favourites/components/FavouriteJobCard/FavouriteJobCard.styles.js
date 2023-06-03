@@ -18,7 +18,9 @@ const styles = StyleSheet.create({
   },
   companyContainer: {flex: 1},
   cityContainer: {
+    flex: 1,
     padding: 5,
+    justifyContent: 'center',
     paddingHorizontal: 10,
     backgroundColor: 'red',
     borderRadius: 25,
@@ -43,7 +45,6 @@ const styles = StyleSheet.create({
     fontSize: 15,
     fontWeight: 'bold',
     color: 'white',
-    textAlignVertical: 'center',
   },
   level: {
     textAlign: 'right',
