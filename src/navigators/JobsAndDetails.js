@@ -10,16 +10,21 @@ function JobsAndDetails() {
       screenOptions={{
         headerShown: false,
         initialRouteName: 'JobList',
+        headerShown: false,
       }}>
       <Stack.Screen
         name="JobList"
         component={Jobs}
-        options={{headerTitle: 'Jobs'}} // TODO
+        options={({navigation}) => {
+          navigation.getParent().setOptions({title: 'Jobs'});
+        }} // TODO
       />
       <Stack.Screen
         name="JobDetail"
         component={JobDetail}
-        options={({route}) => ({title: route.params.title})}
+        options={({navigation, route}) => {
+          navigation.getParent().setOptions({title: route.params.title});
+        }}
       />
     </Stack.Navigator>
   );

@@ -3,7 +3,7 @@ import {Dimensions} from 'react-native';
 
 const styles = StyleSheet.create({
   container: {
-    height: Dimensions.get('window').height / 4.5,
+    height: Dimensions.get('window').height / 3.8,
     margin: 10,
     padding: 8,
     paddingRight: 12,
@@ -12,31 +12,31 @@ const styles = StyleSheet.create({
     borderWidth: 1,
     borderRadius: 10,
     backgroundColor: 'white',
+    justifyContent: 'space-between',
   },
   titleContainer: {
-    flex: 1,
+    minHeight: '33%',
   },
-  companyContainer: {flex: 1},
+  companyContainer: {paddingTop: 2},
   cityContainer: {
-    flex: 1,
-    padding: 5,
     justifyContent: 'center',
-    paddingHorizontal: 10,
+    padding: 5,
     backgroundColor: 'red',
     borderRadius: 25,
     alignSelf: 'flex-start',
   },
-  levelContainer: {flex: 1},
+  levelContainer: {marginTop: 0},
   buttonContainer: {
-    flex: 1.4,
     justifyContent: 'center',
     marginHorizontal: 5,
     borderRadius: 10,
     backgroundColor: 'red',
+    paddingVertical: 5,
   },
   title: {
     fontWeight: 'bold',
     fontSize: 20,
+    margin: 1,
   },
   company: {
     fontSize: 15,

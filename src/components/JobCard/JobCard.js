@@ -8,9 +8,9 @@ function JobCard(props) {
   const {jobId, title, company, city, level} = props;
 
   function navigateToJob(jobId) {
-    navigation.navigate('JobDetail', {title: 'Hello', jobId: jobId}); // TODO
+    navigation.navigate('JobDetail', {title: title, jobId: jobId}); // TODO
   }
-  // TODO Flex yapısını uygula
+  // [x] Flex yapısını uygula
   return (
     <TouchableHighlight onPress={() => navigateToJob(jobId)}>
       <View style={styles.container}>

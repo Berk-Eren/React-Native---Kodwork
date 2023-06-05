@@ -1,3 +1,4 @@
+import {useEffect} from 'react';
 import {View, ScrollView} from 'react-native';
 
 import {Header, Detail, Button} from './components';
@@ -5,7 +6,11 @@ import LoadingWrapper from '../../components/LoadingWrapper/LoadingWrapper';
 
 import {useFetch} from '../../hooks';
 
-function JobDetail({route}) {
+function JobDetail({navigation, route}) {
+  useEffect(() => {
+    navigation.getParent().setOptions({headerTitle: route.params.title});
+  }, [navigation]);
+
   const [data, isLoading, error] = useFetch(
     `api/public/jobs/${route.params.jobId}`,
   );
